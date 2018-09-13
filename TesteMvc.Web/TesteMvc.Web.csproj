@@ -156,6 +156,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\UsuariosController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -196,6 +197,7 @@
     <Content Include="Content\bootstrap-reboot.css.map" />
     <Content Include="Content\bootstrap-grid.min.css.map" />
     <Content Include="Content\bootstrap-grid.css.map" />
+    <Content Include="App_Code\GlyphIcon.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -238,6 +240,11 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
+    <Content Include="Views\Usuarios\Create.cshtml" />
+    <Content Include="Views\Usuarios\Delete.cshtml" />
+    <Content Include="Views\Usuarios\Details.cshtml" />
+    <Content Include="Views\Usuarios\Edit.cshtml" />
+    <Content Include="Views\Usuarios\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -253,9 +260,9 @@
       <Project>{a6c0546a-48cc-4790-824f-5f8f65156684}</Project>
       <Name>TesteMvc.DAL</Name>
     </ProjectReference>
-    <ProjectReference Include="..\TesteMvc.Entidades\TesteMvc.Entidades.csproj">
-      <Project>{3f980809-97de-4787-9176-6da5108742fe}</Project>
-      <Name>TesteMvc.Entidades</Name>
+    <ProjectReference Include="..\TesteMvc.EF\TesteMvc.EF.csproj">
+      <Project>{611c71ec-45c1-47c7-9039-14b895f85583}</Project>
+      <Name>TesteMvc.EF</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

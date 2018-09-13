@@ -1,0 +1,55 @@
+﻿@model TesteMvc.EF.Usuario
+
+@{
+    ViewBag.Title = "Details";
+}
+<div class="container">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4>Detalhes do Usuário</h4>
+            </div>
+            <div class="modal-body">
+                <hr />
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Nome)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Nome)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Sobrenome)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Sobrenome)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Email)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Email)
+                    </dd>
+
+                </dl>
+
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Fechar</button>
+            </div>
+
+        </div>
+    
+    </div>
+    
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.UsuarioId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

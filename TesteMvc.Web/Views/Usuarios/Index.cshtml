@@ -1,0 +1,107 @@
+﻿@model IEnumerable<TesteMvc.EF.Usuario>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table table-bordered">
+    <thead class="thead-dark">
+        <tr>
+            <th>
+               #
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Sobrenome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UsuarioId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Sobrenome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    <div class="btn-group" role="group">
+                        <button class="btn btn-success details" data-id="@item.UsuarioId">Detalhes</button>
+                        <button class="btn btn-primary edit" data-id="@item.UsuarioId">Editar</button>
+                        <button class="btn btn-danger delete" data-id="@item.UsuarioId">Remover</button>
+                    </div>
+
+                        @*@Html.ActionLink("Edit", "Edit", new { id = item.UsuarioId }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.UsuarioId }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.UsuarioId })*@
+                </td>
+            </tr>
+        }
+    </tbody>
+
+</table>
+<div id="modal" class="modal fade" role="dialog" />
+@section scripts{
+    <script>
+        $(function () {
+            $(".details").click(function () {
+                var id = $(this).attr("data-id");
+                $("#modal").load("Details?id=" + id, function () {
+                    $("#modal").modal();
+                })
+            });
+            $(".edit").click(function () {
+                var id = $(this).attr("data-id");
+                var caminho = "Edit";
+
+                $.ajax({
+                    type: "GET",
+                    url: caminho, // url of your action
+                    data: { id: id }, // parameters if available 
+                    dataType: "json",
+                    success: function (data) {
+
+                        window.location.href = data.redirecturl; // your action should return an object having [redirecturl] property
+
+                    },
+                    error: function (httpRequest, textStatus, errorThrown) {  // detailed error messsage 
+                        alert("Error: " + textStatus + " " + errorThrown + " " + httpRequest);
+                    }
+                });
+
+
+            });
+
+
+
+
+            
+
+
+            })
+
+
+
+    </script>
+    
+    
+    }
