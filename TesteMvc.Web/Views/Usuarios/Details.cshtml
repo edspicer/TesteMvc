@@ -4,7 +4,7 @@
     ViewBag.Title = "Details";
 }
 <div class="container">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
                 <h4>Detalhes do Usuário</h4>
@@ -37,7 +37,45 @@
                     </dd>
 
                 </dl>
+                <p>
+                    <span>Detalhes do Usuário:</span>
+                    <br />
 
+                    @if (Model.DetalheUsuario.Count > 0)
+                    {
+                        var lst = Model.DetalheUsuario.ToList();
+
+                        <table class="table table-bordered">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th>#</th>
+                                    <th>Telefone</th>
+                                    <th>Endereço</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+
+                           @foreach(var item in lst)
+                           {
+                               <tr>
+                                   <td>@item.DetalheId</td>
+                                   <td> @item.Telefone</td>
+                                   <td>@item.Endereco</td>
+                                   <td>
+                                       <div class="btn-group" role="group">
+                                           <button class="btn btn-success det-details" data-id="@item.DetalheId">Detalhes</button>
+                                           <button class="btn btn-primary det-edit" data-id="@item.DetalheId">Editar</button>
+                                           <button class="btn btn-danger det-delete" data-id="@item.DetalheId">Remover</button>
+                                       </div>
+
+                                   </td>
+                               </tr>
+
+
+                           }
+                        </table>
+                    }
+                </p>
 
             </div>
             <div class="modal-footer">
@@ -49,7 +87,7 @@
     </div>
     
 </div>
-<p>
+@*<p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.UsuarioId }) |
     @Html.ActionLink("Back to List", "Index")
-</p>
+</p>*@

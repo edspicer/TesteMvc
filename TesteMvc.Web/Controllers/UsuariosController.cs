@@ -41,7 +41,10 @@ namespace TesteMvc.Web.Controllers
 
         }
 
-
+        public ActionResult Create()
+        {
+            return View();
+        }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -71,8 +74,8 @@ namespace TesteMvc.Web.Controllers
             {
                 return HttpNotFound();
             }
-            //return View(user);
-            return Json(user, JsonRequestBehavior.AllowGet);
+            return View(user);
+            //return Json(user, JsonRequestBehavior.AllowGet);
         }
 
         [HttpPost]
@@ -110,7 +113,20 @@ namespace TesteMvc.Web.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            
+
+
+            using (var repDet = new DetalheUsuarioRepository())
+            {
+                List<DetalheUsuario> lst = repDet.GetAll().Where(x => x.Usuarioid == id).ToList();
+
+                if (lst.Count > 0)
+                    lst.ForEach(z=> {
+                        repDet.Delete(a => a.DetalheId == z.DetalheId);
+                    });
+                repDet.Commit();
+            }
+
+
             Usuario user = _repUser.Find(id);
 
             _repUser.Delete(c => c == user);
