@@ -37,6 +37,7 @@ namespace TesteMvc.Web.Controllers
             }
 
             return View(user);
+            //return Json(user, JsonRequestBehavior.AllowGet);
 
         }
 
@@ -70,7 +71,8 @@ namespace TesteMvc.Web.Controllers
             {
                 return HttpNotFound();
             }
-            return View(user);
+            //return View(user);
+            return Json(user, JsonRequestBehavior.AllowGet);
         }
 
         [HttpPost]
@@ -86,7 +88,7 @@ namespace TesteMvc.Web.Controllers
             }
 
 
-            return View(usuario);
+            return Json(usuario, JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult Delete(int? id)

@@ -70,17 +70,20 @@
                 })
             });
             $(".edit").click(function () {
-                var id = $(this).attr("data-id");
-                var caminho = "Edit";
-
+                var idUsuario = $(this).attr("data-id");
+                
                 $.ajax({
                     type: "GET",
-                    url: caminho, // url of your action
-                    data: { id: id }, // parameters if available 
+                    url:  "/Usuarios/Edit", // url of your action
+                    data: { id: idUsuario }, // parameters if available 
                     dataType: "json",
                     success: function (data) {
+                        
+                        //$("#modal").html(data).find("#Principal");
 
-                        window.location.href = data.redirecturl; // your action should return an object having [redirecturl] property
+                        //$("#modal").show();
+
+                        $("#Principal").html($(data).find("#Principal"));
 
                     },
                     error: function (httpRequest, textStatus, errorThrown) {  // detailed error messsage 
